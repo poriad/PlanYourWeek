@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "925206884546",
+    "project_id": "planyourweek-bc1ea",
+    "storage_bucket": "planyourweek-bc1ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925206884546:android:bc013768eebbdd771c8b5b",
+        "android_client_info": {
+          "package_name": "org.poriad.planyourweek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925206884546-5onccjb13mnq8ftm2b0bdqm44odi983i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTlI5mkBZQMgLIMZ52MPXWOpUoq2X5NXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925206884546-5onccjb13mnq8ftm2b0bdqm44odi983i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
