@@ -26,6 +26,11 @@ class LoginActivity : AppCompatActivity() {
         binding.registerText.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+
+        binding.forgotPasswordText.setOnClickListener {
+            startActivity(Intent(this, RecoverPasswordActivity::class.java))
+        }
+
         binding.loginButton.setOnClickListener {
 
             val userEmail = binding.emailLogin.text.toString()
@@ -45,7 +50,11 @@ class LoginActivity : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if(currentUser != null){
-            startActivity(Intent(this, HomeActivity::class.java))
+            if (currentUser.isEmailVerified) {
+                startActivity(Intent(this, HomeActivity::class.java))
+            } else {
+                startActivity(Intent(this, CheckEmailActivity::class.java))
+            }
         }
     }
 
