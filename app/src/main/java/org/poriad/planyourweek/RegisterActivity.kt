@@ -39,7 +39,6 @@ class RegisterActivity : AppCompatActivity() {
                 createAccount(registerEmail, registerPassword)
             }
         }
-
     }
 
     private fun createAccount(email: String, password: String) {

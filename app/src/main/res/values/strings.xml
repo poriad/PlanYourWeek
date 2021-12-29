@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PlanYourWeek</string>
+    <string name="navigation_drawer_open">PlanYourWeek</string>
+    <string name="navigation_drawer_close">PlanYourWeek</string>
 </resources>

@@ -23,6 +23,8 @@ class LoginActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
+        onStart()
+
         binding.registerText.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
@@ -45,9 +47,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     public override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if(currentUser != null){
             if (currentUser.isEmailVerified) {
