@@ -50,7 +50,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun signOut() {
         Firebase.auth.signOut()
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, CalendarActivity::class.java))
     }
 
     // override the onSupportNavigateUp() function to launch the Drawer when the hamburger icon is clicked
