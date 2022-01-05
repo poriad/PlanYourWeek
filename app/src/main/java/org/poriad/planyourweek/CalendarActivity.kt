@@ -1,5 +1,6 @@
 package org.poriad.planyourweek
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import org.joda.time.DateTime
 import org.poriad.planyourweek.databinding.ActivityCalendarBinding
 import org.poriad.planyourweek.model.adapter.CalendarAdapter
+import org.poriad.planyourweek.utils.CalendarUtils
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.YearMonth
@@ -35,33 +37,14 @@ class CalendarActivity : AppCompatActivity(), CalendarAdapter.OnItemListener {
     }
 
     private fun setMonthView() {
-        binding.monthYearTV.text = getMonthYearFromDate(selectedDate)
-        var daysInMonth: MutableList<String> = daysInMonthArray(selectedDate)
+        binding.monthYearTV.text = CalendarUtils.getMonthYearFromDate(selectedDate)
+        var daysInMonth: MutableList<String> = CalendarUtils.daysInMonthArray(selectedDate)
 
         adapter = CalendarAdapter(daysInMonth, this)
         binding.recyclerViewDays.adapter = adapter
         binding.recyclerViewDays.layoutManager = GridLayoutManager(this, 7)
     }
 
-    private fun daysInMonthArray(selectedDate: DateTime): MutableList<String> {
-        var daysInMonthArray: MutableList<String> = mutableListOf()
-        var daysInMonth = selectedDate.dayOfMonth().maximumValue;
-        var dayOfWeek = selectedDate.withDayOfMonth(1).dayOfWeek().get()
-        for (num in 1..42) {
-            if (num <= dayOfWeek || num > daysInMonth + dayOfWeek) {
-                daysInMonthArray.add("")
-            } else {
-                daysInMonthArray.add("${num - dayOfWeek}")
-            }
-        }
-
-        return daysInMonthArray
-    }
-
-    private fun getMonthYearFromDate(date: DateTime): String {
-
-        return "${date.monthOfYear().asText} ${date.year().asShortText}"
-    }
     fun previousMonthAction(view: View) {
         selectedDate = selectedDate.minusMonths(1)
         setMonthView()
@@ -74,5 +57,9 @@ class CalendarActivity : AppCompatActivity(), CalendarAdapter.OnItemListener {
 
     override fun onItemClick(position: Int, dayText: String) {
             Toast.makeText(applicationContext, "Day selected: $dayText", Toast.LENGTH_LONG).show()
+    }
+
+    fun weeklyAction(view: View) {
+        startActivity(Intent(this, WeekViewActivity::class.java))
     }
 }
